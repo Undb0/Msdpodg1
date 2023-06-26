@@ -36,7 +36,7 @@ calls = [
 ]
 
 
-def get_access_token(refresh_token, client_id, client_secret):
+def get_access_token(refresh_token, id, secret):
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
