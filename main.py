@@ -36,15 +36,15 @@ calls = [
 ]
 
 
-def get_access_token(refresh_token, client_id, client_secret):
+def get_access_token(refresh_token, id, secret):
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
     data = {
         'grant_type': 'refresh_token',
         'refresh_token': refresh_token,
-        'client_id': client_id,
-        'client_secret': client_secret,
+        'client_id': id,
+        'client_secret': secret,
         'redirect_uri': 'http://localhost:53682/'
     }
     html = requests.post('https://login.microsoftonline.com/common/oauth2/v2.0/token', data=data, headers=headers)
@@ -56,7 +56,7 @@ def get_access_token(refresh_token, client_id, client_secret):
 def main():
     random.shuffle(calls)
     endpoints = calls[random.randint(0,10)::]
-    access_token = get_access_token(refresh_token, client_id, client_secret)
+    access_token = get_access_token(refresh_token, id, secret)
     session = requests.Session()
     session.headers.update({
         'Authorization': access_token,
